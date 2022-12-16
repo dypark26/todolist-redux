@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useSelector } from "react-redux";
 
 function TodoList({ isActive }) {
-  const todos = useSelector((state) => state.todoReducer);
+  const todos = useSelector((state) => state.todos.todos);
   console.log(todos);
 
   return (

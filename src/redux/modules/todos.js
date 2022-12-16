@@ -29,17 +29,16 @@ export const switchButton = (id, isDone) => {
 };
 
 // 초기 상태값 - initial State
-const intialState = [
-  { title: "title1", contents: "contents1", isDone: false, id: uuidv4() },
-  { title: "title2", contents: "contents2", isDone: false, id: uuidv4() },
-  { title: "title3", contents: "contents3", isDone: true, id: uuidv4() },
-];
+const initialState = {
+  todos: [
+    { title: "title1", contents: "contents1", isDone: false, id: uuidv4() },
+    { title: "title2", contents: "contents2", isDone: false, id: uuidv4() },
+    { title: "title3", contents: "contents3", isDone: true, id: uuidv4() },
+  ],
+};
 
 // 리듀서
-const payload = (state, action) => {
-  state.push(action.payload);
-};
-const todoReducer = (state = intialState, action) => {
+const todos = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TODO: {
       const newTodoList = {
@@ -49,19 +48,22 @@ const todoReducer = (state = intialState, action) => {
         id: uuidv4(),
       };
       return {
-        state: [...state, newTodoList],
+        ...state,
+        todos: [...state.todos, newTodoList],
       };
     }
     case DELETE_TODO: {
       return {
-        state: state.filter((t) => t.id !== payload),
+        ...state,
+        todos: [...state.todos].filter((t) => t.id !== action.payload),
       };
     }
     case SWITCH_BUTTON: {
       return {
-        state: state.map((t) => {
+        ...state,
+        todos: [...state.todos].map((t) => {
           if (t.id === action.payload.id) {
-            return { ...t, isDone: action.payload.isDone };
+            return { ...t, isDone: !action.payload.isDone };
           } else {
             return t;
           }
@@ -74,4 +76,4 @@ const todoReducer = (state = intialState, action) => {
 };
 
 // 모듈파일에서는 리듀서를 export default 한다.
-export default todoReducer;
+export default todos;

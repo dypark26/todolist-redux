@@ -10,6 +10,13 @@ function Input() {
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
+    if (title === "") {
+      alert("title을 입력하세요!");
+      return;
+    } else if (contents === "") {
+      alert("contents를 입력하세요!");
+      return;
+    }
     dispatch(addTodo(title, contents));
     setTitle("");
     setContents("");
