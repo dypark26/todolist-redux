@@ -31,9 +31,19 @@ export const switchButton = (id, isDone) => {
 // 초기 상태값 - initial State
 const initialState = {
   todos: [
-    { title: "title1", contents: "contents1", isDone: false, id: uuidv4() },
-    { title: "title2", contents: "contents2", isDone: false, id: uuidv4() },
-    { title: "title3", contents: "contents3", isDone: true, id: uuidv4() },
+    {
+      title: "Redux",
+      contents: "투두리스트 리팩토링",
+      isDone: false,
+      id: uuidv4(),
+    },
+    { title: "Work out", contents: "헬스장 가기", isDone: false, id: uuidv4() },
+    {
+      title: "React",
+      contents: "투두리스트 완성하기",
+      isDone: true,
+      id: uuidv4(),
+    },
   ],
 };
 

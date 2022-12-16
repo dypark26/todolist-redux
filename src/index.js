@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 // 우리가 추가할 코드 (Redux)
-import store from "./redux/config/configStore";
+import store from "./config/configStore";
 import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
